@@ -7,14 +7,6 @@ import {
 } from "../belive-player-widget";
 
 export default function Home() {
-  const isInIframe = React.useMemo(() => {
-    try {
-      return window.self !== window.top;
-    } catch (e) {
-      return true;
-    }
-  }, []);
-
   React.useEffect(() => {
     player.on(
       BelivePlayerWidget.PlayerEventType.READY,
@@ -66,21 +58,19 @@ export default function Home() {
 
   return (
     <div>
-      {isInIframe && (
-        <div className="alert alert-danger" role="alert">
-          We are restricting iframe from using our script.
-          To make this sample code work
-          <a
-            href="/"
-            target="_blank"
-            className="alert-link mx-1"
-          >
-            click here
-          </a>
-          to open this page in another browser tab and try
-          to click "Watch Live" again
-        </div>
-      )}
+      <div className="alert alert-danger" role="alert">
+        We are restricting iframe from using our script. To
+        make this sample code work
+        <a
+          href="/"
+          target="_blank"
+          className="alert-link mx-1"
+        >
+          click here
+        </a>
+        to open this page in another browser tab and try to
+        click "Watch Live" again
+      </div>
       <div className="d-flex flex-column align-items-center justify-content-center">
         <img
           width="100px"
